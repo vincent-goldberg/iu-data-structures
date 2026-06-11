@@ -24,6 +24,23 @@ public class SortingTest {
     }
 
     /**
+     * Returns true if the array is in ascending order.
+     */
+    private static boolean isSorted(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) return false;
+        }
+        return true;
+    }
+
+    /**
+     * Prints a PASS/FAIL line for the given array.
+     */
+    private static void printCheck(int[] arr) {
+        System.out.println(isSorted(arr) ? "PASS" : "FAIL");
+    }
+
+    /**
      * Tests all five sorting algorithms on the given array.
      * Prints the original array followed by the sorted result of each algorithm.
      * A fresh copy of the original is passed to each sort to preserve the input.
@@ -40,30 +57,35 @@ public class SortingTest {
         SortingAlgorithms.insertionSort(arrCopy);
         System.out.println("After Insertion Sort:");
         printArray(arrCopy);
+        printCheck(arrCopy);
 
         // Test Bubble Sort
         arrCopy = copyArray(arr);
         SortingAlgorithms.bubbleSort(arrCopy);
         System.out.println("After Bubble Sort:");
         printArray(arrCopy);
+        printCheck(arrCopy);
 
         // Test Selection Sort
         arrCopy = copyArray(arr);
         SortingAlgorithms.selectionSort(arrCopy);
         System.out.println("After Selection Sort:");
         printArray(arrCopy);
+        printCheck(arrCopy);
 
         // Test Merge Sort
         arrCopy = copyArray(arr);
         SortingAlgorithms.mergeSort(arrCopy);
         System.out.println("After Merge Sort:");
         printArray(arrCopy);
+        printCheck(arrCopy);
 
         // Test Quick Sort
         arrCopy = copyArray(arr);
         SortingAlgorithms.quickSort(arrCopy);
         System.out.println("After Quick Sort:");
         printArray(arrCopy);
+        printCheck(arrCopy);
     }
 
 
