@@ -54,7 +54,6 @@ public class PerformanceEvaluator {
 
         System.out.println();
         printTable(results);
-        printChart(results);
         writeCSV(results);
     }
 
@@ -147,48 +146,6 @@ public class PerformanceEvaluator {
             }
             System.out.println();
         }
-    }
-
-    // =========================================================
-    // Bar Chart
-    // =========================================================
-
-    /**
-     * Prints an ASCII bar chart comparing all five algorithms at each dataset size.
-     * Uses log scale so fast and slow algorithms are both visible in the same chart.
-     */
-    private static void printChart(long[][] results) {
-        System.out.println("\n===== Performance Chart (log scale) =====");
-
-        for (int d = 0; d < SIZES.length; d++) {
-            System.out.println("\n  n = " + formatSize(SIZES[d]));
-
-            // Find the largest log value at this size to scale the bar widths
-            double maxLog = 1.0;
-            for (int a = 0; a < NAMES.length; a++) {
-                if (results[a][d] > 0) {
-                    double log = Math.log10(results[a][d] + 1);
-                    if (log > maxLog) maxLog = log;
-                }
-            }
-
-            int barWidth = 40;
-            for (int a = 0; a < NAMES.length; a++) {
-                long val = results[a][d];
-                if (val < 0) {
-                    System.out.printf("  %-10s | > 20 m%n", NAMES[a]);
-                } else {
-                    // Scale bar length using log scale
-                    double log = Math.log10(val + 1);
-                    int bars = (int) Math.round(log / maxLog * barWidth);
-                    System.out.printf("  %-10s |%-" + barWidth + "s %s%n",
-                            NAMES[a],
-                            "=".repeat(Math.max(1, bars)),
-                            formatTime(val));
-                }
-            }
-        }
-        System.out.println();
     }
 
     // =========================================================
