@@ -37,7 +37,7 @@ public class PerformanceEvaluator {
             for (int d = 0; d < SIZES.length; d++) {
                 if (timedOut) {
                     results[a][d] = -1; // Skip larger sizes if already timed out
-                    System.out.print("  --");
+                    System.out.print("  --"); // -- = skipped due to previous timeout
                 } else {
                     results[a][d] = measureTime(a, SIZES[d]);
                     if (results[a][d] < 0) {
