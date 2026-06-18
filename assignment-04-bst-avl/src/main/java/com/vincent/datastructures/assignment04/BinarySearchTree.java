@@ -49,5 +49,100 @@ public class BinarySearchTree {
             return search(node.right, value); // Search right subtree
         }
     }
+
+    // =========================================================
+    // In-Order Traversal: left, node, right
+    // =========================================================
+
+    /** Prints values in ascending order. (left, node, right) */
+    public void inOrderTraversal() {
+        inOrderTraversal(root);
+        System.out.println();
+    }
+
+    protected void inOrderTraversal(Node node) {
+        if (node == null) {
+            return; // Base case: empty subtree
+        }
+        inOrderTraversal(node.left); // Traverse left subtree
+        System.out.print(node.value + " "); // Visit node
+        inOrderTraversal(node.right); // Traverse right subtree
+    }
+
+    // =========================================================
+    // Pre-Order Traversal: node, left, right
+    // =========================================================
+    
+    /** Print each node before its subtrees. (node, left, right) */
+    public void preOrderTraversal() {
+        preOrderTraversal(root);
+        System.out.println();
+    }
+
+    protected void preOrderTraversal(Node node) {
+        if (node == null) {
+            return; // Base case: empty subtree
+        }
+        System.out.print(node.value + " "); // Visit node
+        preOrderTraversal(node.left); // Traverse left subtree
+        preOrderTraversal(node.right); // Traverse right subtree
+    }
+
+    // =========================================================
+    // Post-Order Traversal: left, right, node
+    // =========================================================
+    public void postOrderTraversal() {
+        postOrderTraversal(root);
+        System.out.println();
+    }
+
+    protected void postOrderTraversal(Node node) {
+        if (node == null) {
+            return; // Base case: empty subtree
+        }
+        postOrderTraversal(node.left); // Traverse left subtree
+        postOrderTraversal(node.right); // Traverse right subtree
+        System.out.print(node.value + " "); // Visit node
+    }
+
+    // =========================================================
+    // Height Calculation
+    // =========================================================
+    
+    /** Returns the height of the tree (0 for empty tree, 1 for a single node). */
+    public int height() {
+        return height(root);
+    }
+
+    protected int height(Node node) {
+        if (node == null) {
+            return 0; // An empty subtree has no height
+        }
+        return 1 + Math.max(height(node.left), height(node.right));
+    }
+
+    // =========================================================
+    // Delete Node
+    // =========================================================
+
+    /** Removes a value from the tree if present. */
+    public void delete(int value) {
+        root = delete(root, value);
+    }
+
+    protected Node delete(Node node, int value {
+        if (node == null) {
+            return null; // Value not found, nothing to delete
+
+            if (value < < node.value) {
+                node.left = delete(node.left, value); // Recursive left
+            } else if (value > node.value) {
+                node.right = delete(node.right, value); // Recursive right
+            } else {
+                // Found the node to delete
+                
+            }
+        }
+    })
     
 }
