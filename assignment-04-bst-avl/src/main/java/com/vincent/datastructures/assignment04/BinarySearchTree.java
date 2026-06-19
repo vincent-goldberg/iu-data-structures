@@ -11,6 +11,10 @@ public class BinarySearchTree {
 
     protected Node root;
 
+    // =========================================================
+    // Insert Node
+    // =========================================================
+    
     /** Inserts a value into the tree. Duplicates are ignored. */
     public void insert(int value) {
         root = insert(root, value);
@@ -31,6 +35,10 @@ public class BinarySearchTree {
         return node; // Pass subtree back to caller
     }
 
+    // =========================================================
+    // Value Search
+    // =========================================================
+    
     /** Search for a value in the tree. Returns true if found, false otherwise. */
     public boolean search(int value) {
         return search(root, value);
@@ -91,6 +99,8 @@ public class BinarySearchTree {
     // =========================================================
     // Post-Order Traversal: left, right, node
     // =========================================================
+    
+    /** Prints each node after its subtrees. (left, right, node) */
     public void postOrderTraversal() {
         postOrderTraversal(root);
         System.out.println();
@@ -130,19 +140,35 @@ public class BinarySearchTree {
         root = delete(root, value);
     }
 
-    protected Node delete(Node node, int value {
+    protected Node delete(Node node, int value) {
         if (node == null) {
             return null; // Value not found, nothing to delete
+        }
 
-            if (value < < node.value) {
-                node.left = delete(node.left, value); // Recursive left
-            } else if (value > node.value) {
-                node.right = delete(node.right, value); // Recursive right
+        if (value < node.value) {
+            node.left = delete(node.left, value); // Smaller, search left
+        } else if (value > node.value) {
+            node.right = delete(node.right, value); // Bigger, search right
+        } else {
+            // Found the node to delete
+            if (node.left == null) {
+                return node.right; // Replace with right child
+            } else if (node.right == null) {
+                return node.left; // Replace with left child
             } else {
-                // Found the node to delete
-                
+                // Node has two children: find in-order successor
+                node.value = findMin(node.right);
+                node.right = delete(node.right, node.value); // Delete successor
             }
         }
-    })
-    
+        return node; 
+    }
+
+    /** Returns the smallest value in the subtree rooted at node. */
+    protected int findMin(Node node) {
+        while (node.left != null) {
+            node = node.left; // Keep going left until we find the minimum
+        }
+        return node.value; 
+    }
 }
