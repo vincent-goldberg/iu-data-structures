@@ -129,6 +129,4 @@ public class AVLTree extends BinarySearchTree {
         }
         return rebalance(node); // Update height and rotate if unbalanced
     }
-    
-    
 }
