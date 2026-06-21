@@ -39,7 +39,7 @@ public class HashTable {
         // Check chain for existing key; update if present
         Node current = buckets[index];
         while (current != null) {
-            if (current.next == key) {
+            if (current.key == key) {
                 current.value = value;
                 return;
             }
@@ -69,7 +69,7 @@ public class HashTable {
             if (current.key == key ) {
                 return current.value;
             }
-            current = current.value;
+            current = current.next;
         }
         return -1; // Key not found in its bucket's chain
     }

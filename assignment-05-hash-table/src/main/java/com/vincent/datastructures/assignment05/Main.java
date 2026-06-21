@@ -15,8 +15,8 @@ public class Main {
         // =========================================================
         table.put(1, 100);
         table.put(2, 200);
-        System.out.println("get(1) -> " + table.get(1) + " (expected 100");
-        System.out.println("get(2) -> " + table.get(2) + " (expected 200");
+        System.out.println("get(1) -> " + table.get(1) + " (expected 100)");
+        System.out.println("get(2) -> " + table.get(2) + " (expected 200)");
 
         // =========================================================
         // Collision: 5, 15, 25 all hash to index 5 and share one chain.
@@ -24,9 +24,9 @@ public class Main {
         table.put(5, 500);
         table.put(15, 1500);
         table.put(25, 2500);
-        System.out.println("get(5) -> " + table.get(5) + " (expected 500");
-        System.out.println("get(15) -> " + table.get(15) + " (expected 1500");
-        System.out.println("get(25) -> " + table.get(25) + " (expected 2500");
+        System.out.println("get(5) -> " + table.get(5) + " (expected 500)");
+        System.out.println("get(15) -> " + table.get(15) + " (expected 1500)");
+        System.out.println("get(25) -> " + table.get(25) + " (expected 2500)");
 
         // =========================================================
         // Update and remove
@@ -34,7 +34,7 @@ public class Main {
         
         // Updating an existing key replaces its value (no duplicate added).
         table.put(15, 9999);
-        System.out.println("get(15) -> " + table.get(15) + " (expected 9999");
+        System.out.println("get(15) -> " + table.get(15) + " (expected 9999)");
 
         // Remove a middle node from the collision chain, then the head.
         table.remove(15);
